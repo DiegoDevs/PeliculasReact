@@ -41,9 +41,12 @@ function Home() {
             {loading && <p>Cargando más...</p>}
             {error && <p>{error}</p>}
 
-            <button onClick={() => setPage(p => p+1)} disabled={loading}>
+<div className="btn">
+    <button onClick={() => setPage(p => p+1)} disabled={loading}>
                 Ver mas peliculas
             </button>
+</div>
+            
         </main>
     );
 }

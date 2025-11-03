@@ -49,3 +49,31 @@ h1 {
     font-size: 1rem;
   }
 }
+
+.btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.2rem;
+}
+
+button{
+    background-color: #121212;
+    color: #e0e0e0;
+    padding: 1rem 2rem;
+    border: 1px solid #00ffcc;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3 ease, color 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover{
+        background-color: #00ffcc;
+        color: #121212;
+        box-shadow: 0 0 15px #00ffcc;
+    }
+
+    &:active {
+        transform: scale(0.98);
+    }
+}
