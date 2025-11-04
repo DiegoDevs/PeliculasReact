@@ -57,7 +57,7 @@ h1 {
     margin-top: 1.2rem;
 }
 
-button{
+.mas{
     background-color: #121212;
     color: #e0e0e0;
     padding: 1rem 2rem;
@@ -76,4 +76,27 @@ button{
     &:active {
         transform: scale(0.98);
     }
+}
+
+search-bar{
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 0.5rem; 
+  align-items: center;
+
+  input{
+    padding: 0.5rem 0.75rem; 
+    border-radius: 8px;
+    border: 1px solid #ccc; 
+    flex: 1;
+  }
+
+  &button{
+    padding: 0.5rem 0.75rem; 
+    border-radius: 8px; 
+  }
+}
+
+.error{
+  color: red;
 }
