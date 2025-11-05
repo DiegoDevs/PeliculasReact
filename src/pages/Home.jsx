@@ -1,6 +1,6 @@
 //Home
 import { useState, useEffect, useRef } from "react";
-import { getPopularMovies } from "../api/tmdb";
+import { getPopularMovies, searchMovies } from "../api/tmdb";
 import MovieList from "../components/MovieList";
 
 function Home() {
@@ -9,10 +9,11 @@ function Home() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
+  const [isSearching, setIsSearching] = useState(false);
   const inputRef = useRef(null);
 
   useEffect(() => {
-    loadMovies(page);
+    if (!isSearching) loadMovies(page);
   }, [page]);
 
   async function loadMovies(pageNum) {
@@ -21,8 +22,9 @@ function Home() {
       const newMovies = await getPopularMovies(pageNum);
       setMovies((prev) => {
         const allMovies = [...prev, ...newMovies];
-        const unique = allMovies.filter((m, idx, self) => 
-            idx === self.findIndex(x => x.id === m.id));
+        const unique = allMovies.filter(
+          (m, idx, self) => idx === self.findIndex((x) => x.id === m.id)
+        );
         return unique;
       });
     } catch (err) {
@@ -32,54 +34,71 @@ function Home() {
     }
   }
 
-  const normalized = searchTerm.trim().toLowerCase();
-  const filteredMovies = normalized 
-  ? movies.filter(movie => {
-    const title = (movie.title || "").toLowerCase();
-    const original = (movie.original_title || "").toLowerCase();
-    return title.includes(normalized) || original.includes(normalized);
-  })
-  : movies;
+  async function handleSearch(e) {
+    e.preventDefault();
+    if (!searchTerm.trim()) return;
+
+    try {
+      setLoading(true);
+      setIsSearching(true);
+      const results = await searchMovies(searchTerm.trim());
+      setMovies(results);
+    } catch (err) {
+      setError(`Error al buscar peliculas: ${err.message}`);
+    } finally {
+      setLoading(false);
+    }
+  }
 
   function handleClear() {
     setSearchTerm("");
+    setIsSearching(false);
+    setMovies([]);
+    setPage(1);
+    loadMovies(1);
     inputRef.current?.focus();
   }
 
   return (
-    <main> 
-      <h1>Peliculas Populares</h1>
+    <main>
+      <h1>Peliculas React 😊</h1>
 
-      <div className="search-bar">
-        <input 
-        ref={inputRef} 
-        type="text" 
-        placeholder="Buscar peliculas por titulo" 
-        value={searchTerm} 
-        onChange={e => setSearchTerm(e.target.value)} 
-        onKeyDown={e => {
-            if (e.key === "Escape") handleClear();
-        }}
+      <form onSubmit={handleSearch} className="search-bar">
+        <input
+          ref={inputRef}
+          type="text"
+          placeholder="Buscar peliculas por titulo"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
         />
 
-        <button onClick={handleClear} disabled={!searchTerm}>
-            Limpiar
+        <button className="sub" type="submit" disabled={!searchTerm}>
+          Buscar
         </button>
-      </div>
+        <button className="clr" onClick={handleClear} disabled={!searchTerm}>
+          Limpiar
+        </button>
+      </form>
 
       {loading && movies.length === 0 && <p>Cargando más...</p>}
       {error && <p className="error">{error}</p>}
 
-      <MovieList movies={filteredMovies} />
+      {!isSearching && <h2>Peliculas Populares</h2>}
+
+      <MovieList movies={movies} />
 
       {loading && movies.length > 0 && <p>Cargando más...</p>}
 
-      {!searchTerm && (
-      <div className="btn">
-        <button className="mas" onClick={() => setPage((p) => p + 1)} disabled={loading}>
-          Ver mas peliculas
-        </button>
-      </div>
+      {!isSearching && (
+        <div className="btn">
+          <button
+            className="mas"
+            onClick={() => setPage((p) => p + 1)}
+            disabled={loading}
+          >
+            Ver mas peliculas
+          </button>
+        </div>
       )}
     </main>
   );

@@ -22,6 +22,10 @@ h1 {
   margin-bottom: 2rem;
 }
 
+h2 {
+  margin-bottom: 1rem;
+}
+
 .movie-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -78,23 +82,53 @@ h1 {
     }
 }
 
-search-bar{
+.search-bar{
   margin-bottom: 1rem;
   display: flex;
   gap: 0.5rem; 
-  align-items: center;
+  justify-content: center;
+  align-items: center;  
 
   input{
     padding: 0.5rem 0.75rem; 
     border-radius: 8px;
     border: 1px solid #ccc; 
-    flex: 1;
+    width: 50%;
+
+    &:focus {
+      outline: none;
+      border-color: #007bff;
+    }
   }
 
-  &button{
-    padding: 0.5rem 0.75rem; 
-    border-radius: 8px; 
+  @mixin button-base {
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
   }
+    
+    .sub{
+      @include button-base;
+    background-color: #007bff;
+    color: white; 
+
+    &:hover{
+      background-color: darken(#007bff, 10%);
+    }
+    }
+    
+  .clr{
+    @include button-base;
+    background-color: #6c757d;
+    color: white; 
+
+    &:hover{
+      background-color: darken(#6c757d, 10%);
+    }
+    }
+  
 }
 
 .error{
