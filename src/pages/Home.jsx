@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import { getPopularMovies, searchMovies } from "../api/tmdb";
 import MovieList from "../components/MovieList";
+import Header from "../components/Header";
 
 function Home() {
   const [movies, setMovies] = useState([]);
@@ -61,7 +62,8 @@ function Home() {
 
   return (
     <main>
-      <h1>Peliculas React 😊</h1>
+
+      <Header />
 
       <form onSubmit={handleSearch} className="search-bar">
         <input

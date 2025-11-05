@@ -4,6 +4,19 @@
   box-sizing: border-box;
 }
 
+:root {
+  --color-bg: #f8f9fa;
+  --color-text: #0f1c32;
+  --color-card: #ffffff;
+}
+
+// 🌙 Tema oscuro
+[data-theme="dark"] {
+  --color-bg: #0f1c32;
+  --color-text: #f8f9fa;
+  --color-card: #1e293b;
+}
+
 html,
 body,
 #root {
@@ -11,10 +24,11 @@ body,
 }
 
 body {
-  background-color: #0b0b0b;
-  color: white;
+  background-color: var(--color-bg);
+  color: var(--color-text);
   font-family: 'Poppins', sans-serif;
   padding: 2rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h1 {
@@ -33,10 +47,11 @@ h2 {
 }
 
 .movie-card {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--color-card);
   border-radius: 1rem;
   padding: 1rem;
   text-align: center;
+  transition: background-color 0.3s ease;
   transition: transform 0.2s;
 
   &:hover {
@@ -62,8 +77,8 @@ h2 {
 }
 
 .mas{
-    background-color: #121212;
-    color: #e0e0e0;
+    background-color: var(--color-card);
+    color: var(--color-text);
     padding: 1rem 2rem;
     border: 1px solid #00ffcc;
     border-radius: 4px;
@@ -75,6 +90,7 @@ h2 {
         background-color: #00ffcc;
         color: #121212;
         box-shadow: 0 0 15px #00ffcc;
+        opacity: 0.85;
     }
 
     &:active {
