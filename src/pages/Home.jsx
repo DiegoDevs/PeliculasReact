@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { getPopularMovies, searchMovies } from "../api/tmdb";
 import MovieList from "../components/MovieList";
 import Header from "../components/Header";
+import SearchBar from "../components/SearchBar";
 
 function Home() {
   const [movies, setMovies] = useState([]);
@@ -62,25 +63,14 @@ function Home() {
 
   return (
     <main>
-
       <Header />
 
-      <form onSubmit={handleSearch} className="search-bar">
-        <input
-          ref={inputRef}
-          type="text"
-          placeholder="Buscar peliculas por titulo"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-
-        <button className="sub" type="submit" disabled={!searchTerm}>
-          Buscar
-        </button>
-        <button className="clr" onClick={handleClear} disabled={!searchTerm}>
-          Limpiar
-        </button>
-      </form>
+      <SearchBar
+        value={searchTerm}
+        onChange={setSearchTerm}
+        onSearch={handleSearch}
+        onClear={handleClear}
+      />
 
       {loading && movies.length === 0 && <p>Cargando más...</p>}
       {error && <p className="error">{error}</p>}
