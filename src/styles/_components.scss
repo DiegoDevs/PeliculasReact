@@ -14,18 +14,25 @@
   text-align: center;
   transition: background-color 0.3s ease, transform 0.2s;
 
+  backdrop-filter: var(--glass-backdrop);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+
   &:hover {
     transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   }
 
   img {
     width: 100%;
     border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
   h3 {
     margin-top: 0.5rem;
     font-size: 1rem;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
   }
 }
 
@@ -37,20 +44,16 @@
 }
 
 .mas {
-  background-color: var(--color-card);
-  color: var(--color-text);
-  padding: 1rem 2rem;
-  border: 1px solid $color-accent;
-  border-radius: 4px;
+    @include button-base;
+  background: linear-gradient(145deg, $color-accent, $color-vibrant-green);
+  color: $color-dark;
   font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  border:none;
 
   &:hover {
-    background-color: $color-accent;
-    color: $color-dark;
-    box-shadow: 0 0 15px $color-accent;
-    opacity: 0.85;
+    background: linear-gradient(145deg, lighten($color-accent, 5%), lighten($color-vibrant-green, 5%));
+    box-shadow: 0 0 20px $color-accent; 
+    opacity: 1;
   }
 
   &:active {
@@ -68,18 +71,23 @@
   input {
     padding: 0.5rem 0.75rem;
     border-radius: 8px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--glass-border);
     width: 50%;
+    background-color: var(--color-card);
+    backdrop-filter: var(--glass-backdrop);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    color: var(--color-text);
 
     &:focus {
       outline: none;
-      border-color: $color-primary;
+      border-color: $color-vibrant-blue;
+      box-shadow: 0 0 8px $color-vibrant-blue;
     }
   }
 
   .sub {
     @include button-base;
-    background-color: $color-primary;
+    background: linear-gradient(180deg, $color-primary, $color-vibrant-blue);
     color: white;
 
     &:hover {
@@ -100,33 +108,47 @@
 
 .error {
   color: red;
+  text-shadow: 1px 1px 1px rgba(255, 0, 0, 0.2);
 }
 
 .site-footer {
   margin-top: 4rem;
   padding: 2rem 1rem;
   text-align: center;
-  border-top: 1px solid var(--color-card);
+  border-top: 1px solid var(--glass-border);
   font-size: 0.9rem;
   color: var(--color-text);
-  background-color: var(--color-bg);
+  background: var(--color-card); 
+  backdrop-filter: var(--glass-backdrop);
 
   p {
     margin: 0;
   }
 
   strong {
-    color: $color-primary;
+    color: $color-vibrant-blue;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.2);;
   }
 
   a {
-    color: $color-accent;
+    color: $color-vibrant-green;
     text-decoration: none;
     margin-left: 0.5rem;
 
     &:hover {
       text-decoration: underline;
-      color: lighten($color-accent, 10%);
+      color: lighten($color-vibrant-green, 10%);
     }
+  }
+}
+
+.toggle-dark {
+    @include button-base;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(220, 220, 220, 0.8));
+  color: var(--color-text);
+  
+  &:hover {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(230, 230, 230, 0.9));
   }
 }

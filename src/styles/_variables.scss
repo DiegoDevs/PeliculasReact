@@ -1,26 +1,38 @@
 //variables.scss
 
 :root {
-  --color-bg: #f8f9fa;
+  --color-bg: #e0f2fe;
+  --color-bg-lighten: #ecf7ff; 
   --color-text: #0f1c32;
-  --color-card: #ffffff;
+  --color-card: rgba(255, 255, 255, 0.7); 
+  --glass-border: rgba(255, 255, 255, 0.4);
+  --glass-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --glass-backdrop: blur(10px);
 }
 
 [data-theme="dark"] {
   --color-bg: #0f1c32;
+  --color-bg-lighten: #1e2a3c;
   --color-text: #f8f9fa;
-  --color-card: #1e293b;
+  --color-card: rgba(30, 41, 59, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --glass-backdrop: blur(15px);
 }
 
-$color-accent: #00ffcc;
-$color-primary: #007bff;
-$color-secondary: #6c757d;
+$color-accent: #00ffcc; 
+$color-primary: #007bff; 
+$color-secondary: #6c757d; 
 $color-dark: #121212;
+$color-vibrant-blue: #3a86ff;
+$color-vibrant-green: #3dbe4d;
 
 @mixin button-base {
   padding: 0.5rem 0.75rem;
   border-radius: 8px;
-  border: none;
+  border: 1px solid var(--glass-border);
   cursor: pointer;
   transition: background-color 0.3s ease;
+  backdrop-filter: var(--glass-backdrop);
+  box-shadow: var(--glass-shadow);
 }

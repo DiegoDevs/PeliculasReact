@@ -15,11 +15,7 @@ function Header() {
       <h1>Peliculas React 😊</h1>
       <button
         onClick={toggleDarkMode}
-        style={{
-          padding: "0.5rem 1rem",
-          borderRadius: "8px",
-          cursor: "pointer",
-        }}
+        className="toggle-dark"
       >
         {darkMode ? "☀️" : "🌙"}
       </button>
