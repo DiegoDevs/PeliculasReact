@@ -72,14 +72,24 @@ function Home() {
         onClear={handleClear}
       />
 
-      {loading && movies.length === 0 && <p>Cargando más...</p>}
+      {loading && movies.length === 0 && (
+        <div className="loader">
+          <div className="spinner"></div>
+          <p>Cargando más...</p>
+        </div>
+      )}
       {error && <p className="error">{error}</p>}
 
       {!isSearching && <h2>Peliculas Populares</h2>}
 
       <MovieList movies={movies} />
 
-      {loading && movies.length > 0 && <p>Cargando más...</p>}
+      {loading && movies.length > 0 && (
+        <div className="loader">
+          <div className="spinner"></div>
+          <p>Cargando más...</p>
+        </div>
+      )}
 
       {!isSearching && (
         <div className="btn">

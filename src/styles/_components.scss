@@ -5,6 +5,10 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 1.5rem;
+
+  @media (max-width: 400px) {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
 }
 
 .movie-card {
@@ -12,7 +16,7 @@
   border-radius: 1rem;
   padding: 1rem;
   text-align: center;
-  transition: background-color 0.3s ease, transform 0.2s;
+  transition: background-color 0.3s ease, transform 0.3s;
 
   backdrop-filter: var(--glass-backdrop);
   border: 1px solid var(--glass-border);
@@ -20,7 +24,7 @@
 
   &:hover {
     transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
   }
 
   img {
@@ -44,15 +48,19 @@
 }
 
 .mas {
-    @include button-base;
+  @include button-base;
   background: linear-gradient(145deg, $color-accent, $color-vibrant-green);
   color: $color-dark;
   font-size: 1rem;
-  border:none;
+  border: none;
 
   &:hover {
-    background: linear-gradient(145deg, lighten($color-accent, 5%), lighten($color-vibrant-green, 5%));
-    box-shadow: 0 0 20px $color-accent; 
+    background: linear-gradient(
+      145deg,
+      lighten($color-accent, 5%),
+      lighten($color-vibrant-green, 5%)
+    );
+    box-shadow: 0 0 25px $color-accent;
     opacity: 1;
   }
 
@@ -67,6 +75,13 @@
   gap: 0.5rem;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 600px) {
+    flex-wrap: wrap;
+    input {
+      width: 100%;
+    }
+  }
 
   input {
     padding: 0.5rem 0.75rem;
@@ -118,7 +133,7 @@
   border-top: 1px solid var(--glass-border);
   font-size: 0.9rem;
   color: var(--color-text);
-  background: var(--color-card); 
+  background: var(--color-card);
   backdrop-filter: var(--glass-backdrop);
 
   p {
@@ -127,7 +142,7 @@
 
   strong {
     color: $color-vibrant-blue;
-    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.2);;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.2);
   }
 
   a {
@@ -143,12 +158,54 @@
 }
 
 .toggle-dark {
-    @include button-base;
+  @include button-base;
   padding: 0.5rem 1rem;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(220, 220, 220, 0.8));
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.9),
+    rgba(220, 220, 220, 0.8)
+  );
   color: var(--color-text);
-  
+
   &:hover {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(230, 230, 230, 0.9));
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 1),
+      rgba(230, 230, 230, 0.9)
+    );
+  }
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  margin-top: 2rem;
+
+  p {
+    margin-left: 1rem;
+    font-weight: bold;
+    color: var(--color-text);
+  }
+}
+
+.spinner {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 4px solid rgba(0, 123, 255, 0.3);
+  border-top-color: $color-vibrant-blue;
+  animation: spin 1s ease-in-out infinite;
+  box-shadow: 0 0 10px $color-vibrant-blue,
+    inset 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
