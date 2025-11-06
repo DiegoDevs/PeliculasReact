@@ -1,0 +1,26 @@
+//variables.scss
+
+:root {
+  --color-bg: #f8f9fa;
+  --color-text: #0f1c32;
+  --color-card: #ffffff;
+}
+
+[data-theme="dark"] {
+  --color-bg: #0f1c32;
+  --color-text: #f8f9fa;
+  --color-card: #1e293b;
+}
+
+$color-accent: #00ffcc;
+$color-primary: #007bff;
+$color-secondary: #6c757d;
+$color-dark: #121212;
+
+@mixin button-base {
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
