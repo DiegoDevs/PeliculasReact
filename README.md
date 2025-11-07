@@ -9,13 +9,13 @@
 ## Screenshots
 
 **Modo claro**
-![Home Light](public/screenshots/home-light.png)
+![Home Light](public/screenshots/Home-Light.png)
 
 **Modo Oscuro**
-![Home Dark](public/screenshots/home-dark.png)
+![Home Dark](public/screenshots/Home-Dark.png)
 
 **Búsqueda**
-![Search](public/screenshots/search.png)
+![Search](public/screenshots/Search.png)
 
 ---
 
