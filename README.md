@@ -2,7 +2,20 @@
 
 **Una aplicación web moderna para explorar películas populares y buscar por título**, construida con **React + Vite**, la API de **TMDB**, **SCSS**, **Framer Motion** y **modo oscuro persistente**.
 
-**Live Demo:** _En progreso_
+**Live Demo:** [peliculas-react-sigma.vercel.app](https://peliculas-react-sigma.vercel.app/)
+**Repositorio:** [GitHub - DiegoDevs/PeliculasReact](https://github.com/DiegoDevs/PeliculasReact)
+---
+
+## Screenshots
+
+**Modo claro**
+![Home Light](public/screenshots/home-light.png)
+
+**Modo Oscuro**
+![Home Dark](public/screenshots/home-dark.png)
+
+**Búsqueda**
+![Search](public/screenshots/search.png)
 
 ---
 
@@ -28,6 +41,26 @@
 | Framer Motion     | Animaciones fluidas |
 | Context API       | Gestión global del tema |
 | localStorage      | Persistencia del modo oscuro |
+| **Vercel**        | Hosting y CI/CD automático |
+
+## Instalación local
+
+```bash
+# 1. Clonar el repositorio
+git clone https://github.com/DiegoDevs/PeliculasReact.git
+
+# 2. Entrar en el proyecto
+cd PeliculasReact
+
+# 3. Instalar dependencias
+npm install
+
+# 4. Crear archivo .env con tu API Key de TMDB
+echo "VITE_TMDB_API_KEY=tu_api_key" > .env
+
+# 5. Ejecutar en modo desarrollo
+npm run dev
+```
 
 ## Licencia
 
@@ -38,5 +71,6 @@ MIT License (LICENSE) © 2025 **Diego**
 ## Autor
 
 **Diego**  
+diegordriguezt@gamil.com
 Frontend Developer | React Enthusiast  
 [GitHub: @DiegoDevs](https://github.com/DiegoDevs)
