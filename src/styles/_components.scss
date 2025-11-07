@@ -166,6 +166,9 @@
     rgba(220, 220, 220, 0.8)
   );
   color: var(--color-text);
+  position: absolute;
+  top: 2rem;
+  right: 1rem;
 
   &:hover {
     background: linear-gradient(
@@ -208,4 +211,11 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
 }

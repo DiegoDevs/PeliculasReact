@@ -21,7 +21,7 @@ function MovieCard({ movie }) {
   );
 }
 
-MovieCard.prototype = {
+MovieCard.proptype = {
   movie: PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string,

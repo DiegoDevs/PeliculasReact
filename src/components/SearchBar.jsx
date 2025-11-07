@@ -1,8 +1,16 @@
 // SeacrhBar.jsx
-function SearchBar({ value, onChange, onSearch, onClear }) {
+import { forwardRef } from "react";
+
+const SearchBar = forwardRef(function SearchBar({
+  value,
+  onChange,
+  onSearch,
+  onClear,
+}, ref) {
   return (
     <form onSubmit={onSearch} className="search-bar">
       <input
+        ref={ref}
         type="text"
         placeholder="Buscar peliculas por titulo"
         value={value}
@@ -17,6 +25,6 @@ function SearchBar({ value, onChange, onSearch, onClear }) {
       </button>
     </form>
   );
-}
+});
 
 export default SearchBar;

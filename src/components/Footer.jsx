@@ -8,6 +8,7 @@ function Footer() {
           href="https://github.com/DiegoDevs"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Perfil de GitHub de Diego"
         >
           GitHub
         </a>

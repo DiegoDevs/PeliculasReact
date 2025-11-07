@@ -16,7 +16,7 @@ function Home() {
 
   useEffect(() => {
     if (!isSearching) loadMovies(page);
-  }, [page]);
+  }, [page, isSearching]);
 
   async function loadMovies(pageNum) {
     try {
@@ -66,6 +66,7 @@ function Home() {
       <Header />
 
       <SearchBar
+        ref={inputRef}
         value={searchTerm}
         onChange={setSearchTerm}
         onSearch={handleSearch}
@@ -81,6 +82,7 @@ function Home() {
       {error && <p className="error">{error}</p>}
 
       {!isSearching && <h2>Peliculas Populares</h2>}
+      {isSearching && <p>Mostrando resultados para: "{searchTerm}"</p>}
 
       <MovieList movies={movies} />
 
